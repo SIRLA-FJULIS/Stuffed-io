@@ -85,8 +85,6 @@ def screen_update():
 			points.remove(i)
 			radius += 80 / radius
 
-		
-
 	player.draw()
 
 	pygame.display.flip()

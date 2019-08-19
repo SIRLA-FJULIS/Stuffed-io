@@ -16,4 +16,3 @@ speed_y = 0
 radius = 20
 
 running = True
-points = []

@@ -4,21 +4,7 @@ from settings import *
 from os import path
 import random
 import time
-
-
-
-def screen_update():
-    screen.fill(WHITE)
-    for i in points:
-        if collision_check(player, i):
-            points.remove(i)
-            radius += 80 / radius
-            
-        i.draw()
-    player.draw()
-    pygame.display.flip()
         
-    
 class Game:
     def __init__(self):
         pygame.init()
@@ -31,7 +17,7 @@ class Game:
         
         self.clock = pygame.time.Clock()
         self.running = True
-        self.playing = True
+        self.playing = True 
         
         self.all_sprites = pygame.sprite.Group()
         self.points = pygame.sprite.Group()
@@ -60,13 +46,16 @@ class Game:
             if event.type == pygame.QUIT:
                 self.quitgame(self)
                 
+    def collision_check(object_A, object_B):#碰撞檢查
+        return(pygame.sprite.collide_circle(object_A,object_B)) #判斷兩個rect是否有碰撞
+                
     def update(self):
         self.all_sprites.update()
-        
-        for i in points:
-            if collision_check(player, i):
-                print("hit")
-                points.remove(i)
+        global radius
+        for i in self.points:
+            
+            if pygame.sprite.collide_circle(self.player, i):
+                self.points.remove(i)
                 radius += 80 / radius
                 
         if len(self.points) < 30:
@@ -74,9 +63,6 @@ class Game:
             self.all_sprites.add(p)
             self.points.add(p)
             
-    def collision_check(object_A, object_B):#碰撞檢查
-        return(pygame.sprite.collide_circle(object_A,object_B)) #判斷兩個rect是否有碰撞
-
     def draw(self):
         self.screen.fill(WHITE) #背景底色
         self.all_sprites.draw(self.screen)
@@ -89,14 +75,12 @@ class Game:
             self.draw()
             self.clock.tick(FPS)
             game.load_data()
-            
 
     def game_intro(self):
         pass
     def gameover(self):
         pass
-
-    
+        
     def quitgame():
         quit()
 

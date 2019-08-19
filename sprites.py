@@ -9,8 +9,8 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.Surface((20, 20))
         self.rect = self.image.get_rect()
 
-        self.player_x = DISPLAY_WIDTH / 2
-        self.player_y = DISPLAY_HEIGHT / 2
+        self.rect.x = DISPLAY_WIDTH / 2
+        self.rect.y  = DISPLAY_HEIGHT / 2
         
         self.speed_x = 0
         self.speed_y = 0
@@ -22,13 +22,14 @@ class Player(pygame.sprite.Sprite):
             self.speed_x = -5
         elif keystate[pygame.K_RIGHT]:
             self.speed_x = 5
+        else:
+            self.speed_x = 0
+        
         if keystate[pygame.K_DOWN]:
             self.speed_y = 5
         elif keystate[pygame.K_UP]:
             self.speed_y = -5
-        if keystate[pygame.KEYUP]:
-            print ("keyup")
-            self.speed_x = 0
+        else:  
             self.speed_y = 0
             
         
