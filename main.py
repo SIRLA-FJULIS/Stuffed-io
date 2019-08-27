@@ -27,9 +27,6 @@ class Game:
             p = Point()
             self.all_sprites.add(p)
             self.points.add(p)
-    
-    def load_data(self):
-        self.player_img = pygame.draw.ellipse(self.screen, BLACK, (600, 300, radius, radius))
         
     def draw_text(self, surf, text, size, x, y):
         font = pygame.font.Font(self.font_filename, size)
@@ -51,12 +48,11 @@ class Game:
                 
     def update(self):
         self.all_sprites.update()
-        global radius
-        for i in self.points:
-            
+        for i in self.points:  
             if pygame.sprite.collide_circle(self.player, i):
+                print("hit")
                 self.points.remove(i)
-                radius += 80 / radius
+                self.player.grow()
                 
         if len(self.points) < 30:
             p = Point()
@@ -74,7 +70,6 @@ class Game:
             self.update()
             self.draw()
             self.clock.tick(FPS)
-            game.load_data()
 
     def game_intro(self):
         pass

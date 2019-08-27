@@ -14,6 +14,8 @@ class Player(pygame.sprite.Sprite):
         
         self.speed_x = 0
         self.speed_y = 0
+        
+        self.radius = 20
 
     def update(self):
         keystate = pygame.key.get_pressed()
@@ -31,11 +33,13 @@ class Player(pygame.sprite.Sprite):
             self.speed_y = -5
         else:  
             self.speed_y = 0
-            
-        
-            
+                      
         self.rect.x += self.speed_x
         self.rect.y += self.speed_y
+        self.rect.height = self.radius
+        self.rect.width = self.radius
+         
+        print(self.radius)
          
         if self.rect.right > DISPLAY_WIDTH:
             self.rect.right = DISPLAY_WIDTH
@@ -45,10 +49,10 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = DISPLAY_HEIGHT
         if self.rect.top < 0:
             self.rect.top = 0
-    """        
-    def draw(self):
-        pygame.draw.ellipse(self.screen, BlACK, (self.player_x, self.player_y, radius, radius))
-    """
+         
+    def grow(self):
+        self.radius += 80 / self.radius
+    
 
 
 class Point(pygame.sprite.Sprite):

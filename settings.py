@@ -13,6 +13,6 @@ TITLE = "吃粗飽.io"
 speed_x = 0
 speed_y = 0
 
-radius = 20
+
 
 running = True
