@@ -36,11 +36,11 @@ class Player(pygame.sprite.Sprite):
                       
         self.rect.x += self.speed_x
         self.rect.y += self.speed_y
+        
         self.rect.height = self.radius
         self.rect.width = self.radius
-         
-        print(self.radius)
-         
+        self.image = pygame.Surface((self.radius, self.radius))
+        
         if self.rect.right > DISPLAY_WIDTH:
             self.rect.right = DISPLAY_WIDTH
         if self.rect.left < 0:
@@ -51,7 +51,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.top = 0
          
     def grow(self):
-        self.radius += 80 / self.radius
+        self.radius += int(80 / self.radius)
     
 
 

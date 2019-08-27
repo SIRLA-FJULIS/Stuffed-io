@@ -48,9 +48,9 @@ class Game:
                 
     def update(self):
         self.all_sprites.update()
-        for i in self.points:  
+        for i in self.points:
             if pygame.sprite.collide_circle(self.player, i):
-                print("hit")
+                self.all_sprites.remove(i)
                 self.points.remove(i)
                 self.player.grow()
                 
