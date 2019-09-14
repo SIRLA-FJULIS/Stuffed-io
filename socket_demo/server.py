@@ -4,11 +4,10 @@ import sys
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server = ''
 port = 5555
 
 try:
-    s.bind((server, port))
+    s.bind(('', port))
 except socket.error as e:
     print(str(e))
     

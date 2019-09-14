@@ -14,7 +14,7 @@ fps = 30
 
 pygame.init()
 screen = pygame.display.set_mode((width,height))
-pygame.display.set_caption("吃粗飽.io")
+pygame.display.set_caption("Stuffed.io")
 clock = pygame.time.Clock()
 
 speed_x = 0
