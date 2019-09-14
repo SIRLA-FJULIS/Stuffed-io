@@ -7,6 +7,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((20, 20))
+        pygame.draw.ellipse(self.image, RED, (0, 0, 20, 20))
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
 
         self.rect.x = DISPLAY_WIDTH / 2
@@ -40,6 +42,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.height = self.radius
         self.rect.width = self.radius
         self.image = pygame.Surface((self.radius, self.radius))
+        pygame.draw.ellipse(self.image, RED, (0, 0, 20, 20))
+        self.image.set_colorkey(BLACK)
         
         if self.rect.right > DISPLAY_WIDTH:
             self.rect.right = DISPLAY_WIDTH
